@@ -3,9 +3,10 @@ import appClient from '../services/api-clinte';
 import apiClinte from '../services/api-clinte';
 import { CanceledError } from 'axios';
 
-interface Game {
+export interface Game {
   id: number;
   name: string;
+  background_image: string;
 }
 interface FetchGamesResponse {
   count: number;
