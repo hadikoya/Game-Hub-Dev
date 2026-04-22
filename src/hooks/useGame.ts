@@ -3,6 +3,7 @@ import apiClinte from '../services/api-clinte';
 import { CanceledError } from 'axios';
 import useData from './useData';
 import { Genre } from './useGenre';
+import { GameQuery } from '../App';
 
 export interface Platform {
   id: number;
@@ -17,6 +18,6 @@ export interface Game {
   metacritic: number;
 }
 
-const useGame = (selectGenre: Genre | null, selectedPlatform: Platform | null) => useData<Game>("/games", {params: { genres: selectGenre?.id, platforms: selectedPlatform?.id }},[selectGenre?.id, selectedPlatform ?.id]);  
+const useGame = (gameQuery: GameQuery) => useData<Game>("/games", {params: { genres: gameQuery.genre?.id, platforms: gameQuery.platform?.id }},[gameQuery]);  
 
 export default useGame;
