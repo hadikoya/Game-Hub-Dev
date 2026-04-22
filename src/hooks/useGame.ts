@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import apiClinte from '../services/api-clinte';
 import { CanceledError } from 'axios';
 import useData from './useData';
+import { Genre } from './useGenre';
 
 export interface Platform {
   id: number;
@@ -16,6 +17,6 @@ export interface Game {
   metacritic: number;
 }
 
-const useGame = () => useData<Game>("/games");  
+const useGame = (selectGenre: Genre | null) => useData<Game>("/games", {params: { genres: selectGenre?.id }},[selectGenre?.id]);  
 
 export default useGame;
