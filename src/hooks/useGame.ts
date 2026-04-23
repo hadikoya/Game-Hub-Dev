@@ -4,6 +4,7 @@ import { CanceledError } from 'axios';
 import useData from './useData';
 import { Genre } from './useGenre';
 import { GameQuery } from '../App';
+import { number } from 'framer-motion';
 
 export interface Platform {
   id: number;
@@ -16,6 +17,7 @@ export interface Game {
   background_image: string;
   parent_platforms: { platform: Platform }[];
   metacritic: number;
+  rating_top:number;
 }
 
 const useGame = (gameQuery: GameQuery) => useData<Game>("/games", {params: { genres: gameQuery.genre?.id, platforms: gameQuery.platform?.id, ordering: gameQuery.sortOrder,search:gameQuery.searchText }},[gameQuery]);  
